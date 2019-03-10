@@ -1,0 +1,68 @@
+<div class="banner">
+    <div class="main1000">
+        <img src="{{if $himg}}/upload/hear_logo/{{$himg.logo}}{{else}}/statics/images/banner.jpg{{/if}}" alt="" width="1000" height="100">
+    </div>
+</div>
+{{if $check_login != -1}}
+<div class="top-header">
+    <div class="main1000">
+        <div class="logining" id="JloginUser">
+            <div class="afer-login">
+                <span class="fl"><img src="/statics/images/user_icon.png" alt=""><em class="login-user">{{$header_name}}</em></span>
+                <span class="triangle"></span>
+            </div>
+            <ul class="login-list" id="JuserMenu" style="display:none;">
+                {{if $check_login ==1}}
+                <li><a href="/notice/get_list" target="_blank"><em class="xx"></em>个人消息
+                    {{if $notice_count > 0}}
+                    <i class="nums">{{$notice_count}}</i>
+                    {{/if}}
+                </a></li>
+                <li><a href="/company/get_company_detail/{{$cpyid}}" target="_blank"><em class="cxjl"></em>诚信记录</a></li>
+                <li><a href="/company/open" target="_blank"><em class="jbxx"></em>修改信息</a></li>
+                <li><a href="/company/edit_pwd" target="_blank"><em class="xgmm"></em>修改密码</a></li>
+                <li><a href="/company/logout"><em class="out"></em>退出</a></li>
+                {{/if}}
+                {{if $check_login ==2}}
+                <li><a href="/agent/add_track" target="_blank"><em class="cxjl"></em>人事转移</a></li>
+                <li><a href="/agent/list_ns_jg" target="_blank"><em class="cxjl"></em>年审结果</a></li>
+                <li><a href="/agent/open" target="_blank"><em class="jbxx"></em>修改信息</a></li>
+                <li><a href="/agent/edit_pwd" target="_blank"><em class="xgmm"></em>修改密码</a></li>
+                <li><a href="/agent/logout"><em class="out"></em>退出</a></li>
+                {{/if}}
+            </ul>
+        </div>
+        <!--        <a href="login.html">公司/经纪人登录</a>&nbsp&nbsp|&nbsp&nbsp<a href="http://manager.ksls.com.cn/admin.php/login/index">管理员登录</a> -->
+
+    </div>
+</div>
+{{else}}
+<div class="top-header">
+    <div class="main1000">
+        <a href="/index/login">公司/经纪人登录</a>&nbsp&nbsp|&nbsp&nbsp<a href="/admin.php/login/index" target="_blank">管理员登录</a>
+    </div>
+</div>
+{{/if}}
+<div class="header">
+    <div class="main1000">
+        <a href="/index" class="logo"></a>
+        <div class="menu">
+            <a href="/index">首页</a>
+            <a href="/index#show_2">信用公示</a>
+            <!--<a href="/index#show_3">表彰受理</a>-->
+            <a href="/index#show_4">下载中心</a>
+        </div>
+        <div class="bbBtn">
+        {{if $check_login == -1}}
+        <a href="/company/open" target="_blank">公司备案</a>
+        {{else}}
+        {{if $check_login ==1 && $company_ns == 1}}
+        <a href="/company/open" target="_blank">公司年审</a>
+        {{/if}}
+        {{if $check_login ==2 && $agent_ns==1}}
+        <a href="/agent/add_ns" target="_blank">经纪人年审</a>
+        {{/if}}
+        {{/if}}
+    </div>
+    </div>
+</div>
